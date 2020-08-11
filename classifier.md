@@ -105,3 +105,9 @@ Common pre-processing step in machine learning is to center and standardize the 
 Image dataset is now ready.
 
 ### Algorithm
+
+![]()
+
+    def sigmoid(z):
+    s = 1/(1+np.exp(-z))
+    return s
