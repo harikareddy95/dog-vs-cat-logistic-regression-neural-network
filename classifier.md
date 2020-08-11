@@ -54,7 +54,7 @@ Preparing data for training and testing data sets into numpy arrays
     train_set_x, train_set_y = prepare_data(train_images)
     test_set_x, test_set_y = prepare_data(test_images)
     
-Re-shaping images of shape (rows, cols, channels) into single vectors of shape (rows*cols*channels,1). Each column represents a flattened image. 
+Re-shaping images of shape (rows, cols, channels) into single vectors of shape (rows\*cols\*channels,1). Each column represents a flattened image. 
 
     train_set_x_flatten = train_set_x.reshape(train_set_x.shape[0], rows*cols*channels).T
     test_set_x_flatten = test_set_x.reshape(test_set_x.shape[0], -1).T
@@ -105,7 +105,19 @@ Common pre-processing step in machine learning is to center and standardize the 
 Image dataset is now ready.
 
 ### Algorithm
-The architecture of the simple neural network(one neuron) is shown below. Untill now image to vector pre-processing is done. The sigmoid function is used to get the output as 1 or 0(dog/cat).
+The architecture of the simple neural network(one neuron) is shown below. 
+
+Main steps for building a neural network are: 
++ Defining model structure
++ Initializing model parameters
++ Learning the parameters (loop)
+    + Current loss (forward propagation)
+    + Current gradient (backward propagation)
+    + Update parameters (Gradient descent)
+ + Predict on test data
+ + Analyse and conclude
+ 
+Untill now image to vector pre-processing is done. The sigmoid function is used to get the output as 1 or 0(dog/cat).
 
 <img src="/general-architecture.png" width="650"/>
 
