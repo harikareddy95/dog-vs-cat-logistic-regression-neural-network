@@ -107,9 +107,9 @@ Image dataset is now ready.
 ### Algorithm
 The architecture of the simple neural network(one neuron) is shown below. Untill now image to vector pre-processing is done. The sigmoid function is used to get the output as 1 or 0(dog/cat).
 
+![Neural network](/general-architecture.png=100*20)
 
 
-![](/Users/harika/Documents/pythonprac/code/dogvscat/general-architecture.png)
 
 Sigmoid function decides the final output 
 ![sigmoid function](/sigmoid-function.png)
