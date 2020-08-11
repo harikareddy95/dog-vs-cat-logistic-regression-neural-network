@@ -49,7 +49,7 @@ Function which generates the data x(parameters) and y(output) taking list of ima
     
 > all the images in the folder are named as cats and dogs
 
-Preparing data for training and testing data sets
+Preparing data for training and testing data sets into numpy arrays
 
     train_set_x, train_set_y = prepare_data(train_images)
     test_set_x, test_set_y = prepare_data(test_images)
@@ -59,3 +59,49 @@ Re-shaping images of shape (rows, cols, channels) into single vectors of shape (
     train_set_x_flatten = train_set_x.reshape(train_set_x.shape[0], rows*cols*channels).T
     test_set_x_flatten = test_set_x.reshape(test_set_x.shape[0], -1).T
     
+Printing out the shapes of the dataset
+
+    print("train_set_x shape: "+str(train_set_x.shape))
+    print("train_set_x_flatten shape: "+str(train_set_x_flatten.shape))
+    print("train_set_y shape: "+str(train_set_y.shape))
+    print("test_set_x shape: "+str(test_set_x.shape))
+    print("test_set_x_flatten shape: "+str(test_set_x_flatten.shape))
+    print("test_set_y shape: "+str(test_set_y.shape))
+
+Output:
+
+<table style="width:35%">
+    <tr>
+        <td>train_set_x shape</td>
+        <td>(25000, 64, 64, 3)</td>  
+    </tr>
+    <tr>
+        <td>train_set_x_flatten shape</td>
+        <td>(12288, 25000)</td>  
+    </tr>
+    <tr>
+        <td>train_set_y shape</td>
+        <td>(1, 25000)</td>  
+    </tr>
+    <tr>
+        <td>test_set_x shape</td>
+        <td>(12500, 64, 64, 3)</td>  
+    </tr>
+    <tr>
+        <td>test_set_x_flatten shape</td>
+        <td>(12288, 12500)</td>  
+    </tr>
+    <tr>
+        <td>test_set_y shape</td>
+        <td>(1, 12500)</td>  
+    </tr>
+</table>
+    
+Common pre-processing step in machine learning is to center and standardize the dataset, means to substract the mean and divide by standard deviation of the numpy array. For picture dataset, its easy to divide every row of the dataset by 255(maximum value of a pixel channel).
+
+    train_set_x = train_set_x_flatten/255
+    test_set_x = test_set_x_flatten/255
+    
+Image dataset is now ready.
+
+#### Algorithm
