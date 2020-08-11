@@ -5,7 +5,7 @@ Model should take number of inputs and give one single output(cat/dog). Using ne
 ## Steps for 
 
 
-#### Pre-processing the dataset
+### Pre-processing the dataset
 Images in both the folders are of various sizes, so we should define our image size. 
 
     rows = 64 
@@ -104,4 +104,4 @@ Common pre-processing step in machine learning is to center and standardize the 
     
 Image dataset is now ready.
 
-#### Algorithm
+### Algorithm
