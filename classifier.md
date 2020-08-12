@@ -2,7 +2,6 @@
 Using a free Dogs vs. Cats Kaggle [dataset](https://www.kaggle.com/c/dogs-vs-cats/data). The dataset contains two folders namely, train and test1. Each folder has various images of cats and dogs. The model should classify each image as cat or dog, since the images in the training folder are given with the true label, it is a supervised learning. 
 
 Model should take number of inputs and give one single output(cat/dog). Using neural network, s simple classifier like logistic regression(binary classification method) can do this task.
-## Steps for 
 
 
 ### Pre-processing the dataset
@@ -117,11 +116,11 @@ Main steps for building a neural network are:
  + Predict on test data
  + Analyse and conclude
  
-<img src="/general-architecture.png" width="650"/>
+<img src="/images/general-architecture.png" width="650"/>
 
 Sigmoid function decides the final output. Applying a sigmoid function, scales the decimal value to 1 or 0 depending on the value, if it is >0.5, output is 1 or else 0.
 
-![sigmoid function](/sigmoid-function.png)
+![sigmoid function](/images/sigmoid-function.png)
 
     def sigmoid(z):
     s = 1/(1+np.exp(-z))
