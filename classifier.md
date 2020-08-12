@@ -127,100 +127,100 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
     s = 1/(1+np.exp(-z))
     return s
 
-Initializing model parameters depending on the dimensions(parameters). w is weights which is a numpy array and b is the bias which is a scalar added.
++ Initializing model parameters depending on the dimensions(parameters). w is weights which is a numpy array and b is the bias which is a scalar added.
 
-    def initialize_with_zeros(dim):
-        w = np.zeros((dim,1))
-        b = 0
-        return w,b
-    
-Learning the parameters with forward and backward propagation. Using weight and bias, output is predicted for a training example(A-predicted output). y being the true label, current loss is calculated using both actual and predicted labels. Total cost is calculated by summing over all training examples. Gradient is calculated in the reverse direction, cost derived by predicted label and then derived by weight and bias results in following equations. Propagate function takes in weight, bias, parameters of training images stored in x and true label vector y and gives gradients(created a dictionary for w and b) and cost are returned.
+        def initialize_with_zeros(dim):
+            w = np.zeros((dim,1))
+            b = 0
+            return w,b
+
++ Learning the parameters with forward and backward propagation. Using weight and bias, output is predicted for a training example(A-predicted output). y being the true label, current loss is calculated using both actual and predicted labels. Total cost is calculated by summing over all training examples. Gradient is calculated in the reverse direction, cost derived by predicted label and then derived by weight and bias results in following equations. Propagate function takes in weight, bias, parameters of training images stored in x and true label vector y and gives gradients(created a dictionary for w and b) and cost are returned.
  
-    def propagate(w,b,x,y):
-        m = x.shape[1] #number of training examples
-        #Forward propagation
-        z = np.dot(w.T, x)+b
-        A = sigmoid(z)
-        cost = (-np.sum(y*np.log(A)+(1-y)*np.log(1-A)))/m
-        #Backward propagation
-        dw = (np.dot(x,(A-y).T))/m
-        db = (np.sum(A-y))/m
-        cost = np.squeeze(cost)
-        grads = {"dw": dw,
-                 "db": db}
-        return grads, cost
+        def propagate(w,b,x,y):
+            m = x.shape[1] #number of training examples
+            #Forward propagation
+            z = np.dot(w.T, x)+b
+            A = sigmoid(z)
+            cost = (-np.sum(y*np.log(A)+(1-y)*np.log(1-A)))/m
+            #Backward propagation
+            dw = (np.dot(x,(A-y).T))/m
+            db = (np.sum(A-y))/m
+            cost = np.squeeze(cost)
+            grads = {"dw": dw,
+                     "db": db}
+            return grads, cost
         
-Updating the parameters through optimize function. Inorder to update the parameters, first they should be retreived from propagate function. Weight and bias are updated according to the learning rate and retrieved gradient. Then updating them back to the dictionary. every 100 iterations records the cost.
++ Updating the parameters through optimize function. Inorder to update the parameters, first they should be retreived from propagate function. Weight and bias are updated according to the learning rate and retrieved gradient. Then updating them back to the dictionary. every 100 iterations records the cost.
 
-    def optimize(w,b,x,y,num_iterations,learning_rate,print_cost=False):
-        costs = []
-        for i in range(num_iterations):             
-            grads, cost = propagate(w,b,x,y)
-            #retrieve derivates
-            dw = grads["dw"]
-            db = grads["db"]
-            #update
-            w = w-(learning_rate*dw)
-            b = b-(learning_rate*db)
-            #Recording costs
-            if i%100 == 0:
-                costs.append(cost)
-            #Print the cost every 100 training iterations
-            if print_cost and i%100 == 0:
-                print("Cost after iteration %i: %f" %(i,cost))
-        #Update w and b to dictionary
-        params = {"w": w,
-                 "b": b}
-        #Update derivates to dictionary
-        grads = {"dw": dw,
-                "db": db}
-        return params, grads, costs
+        def optimize(w,b,x,y,num_iterations,learning_rate,print_cost=False):
+            costs = []
+            for i in range(num_iterations):             
+                grads, cost = propagate(w,b,x,y)
+                #retrieve derivates
+                dw = grads["dw"]
+                db = grads["db"]
+                #update
+                w = w-(learning_rate*dw)
+                b = b-(learning_rate*db)
+                #Recording costs
+                if i%100 == 0:
+                    costs.append(cost)
+                #Print the cost every 100 training iterations
+                if print_cost and i%100 == 0:
+                    print("Cost after iteration %i: %f" %(i,cost))
+            #Update w and b to dictionary
+            params = {"w": w,
+                     "b": b}
+            #Update derivates to dictionary
+            grads = {"dw": dw,
+                    "db": db}
+            return params, grads, costs
         
-Finally, predicting on data, this function takes in final weight and bias from dictionary  and x as parameters of training and test data and returns the prediction.
++ Finally, predicting on data, this function takes in final weight and bias from dictionary  and x as parameters of training and test data and returns the prediction.
 
-    def predict(w,b,x):
-        m = x.shape[1]
-        y_prediction = np.zeros((1,m))
-        w = w.reshape(x.shape[0],1)
-        #
-        A = sigmoid(np.dot(w.T,x)+b)
+        def predict(w,b,x):
+            m = x.shape[1]
+            y_prediction = np.zeros((1,m))
+            w = w.reshape(x.shape[0],1)
+            #
+            A = sigmoid(np.dot(w.T,x)+b)
 
-        for i in range(A.shape[1]):
-            # Convert probabilities A[0,i] to actual predictions p[0,i]
-            if A[0,i] > 0.5:
-                y_prediction[[0],[i]] = 1
-            else: 
-                y_prediction[[0],[i]] = 0
+            for i in range(A.shape[1]):
+                # Convert probabilities A[0,i] to actual predictions p[0,i]
+                if A[0,i] > 0.5:
+                    y_prediction[[0],[i]] = 1
+                else: 
+                    y_prediction[[0],[i]] = 0
 
-        return y_prediction
+            return y_prediction
         
-Putting it all together, into a model function. 
++ Putting it all together, into a model function. 
 
-    def model(x_train, y_train, x_test, y_test, num_iterations=2000, learning_rate=0.5, print_cost=False):
-        w, b = initialize_with_zeros(x_train.shape[0])
+        def model(x_train, y_train, x_test, y_test, num_iterations=2000, learning_rate=0.5, print_cost=False):
+            w, b = initialize_with_zeros(x_train.shape[0])
+
+            parameters, grads, costs = optimize(w,b,x_train,y_train,num_iterations=2000,learning_rate=0.005,print_cost=True)
+
+            w=parameters["w"]
+            b=parameters["b"]
+
+            y_prediction_test = predict(w,b,x_test)
+            y_prediction_train = predict(w,b,x_train)
+
+            print("train accuracy: {}%".format(100-np.mean(np.abs(y_prediction_train - y_train))*100))
+            print("test accuracy: {}%".format(100-np.mean(np.abs(y_prediction_test - y_test))*100))
+
+            dict = {"costs": costs,
+                    "Y_prediction_test": y_prediction_test,
+                    "Y_prediction_train": y_prediction_train,
+                    "w": w,
+                    "b": b,
+                    "learning_rate": learning_rate,
+                    "num_iterations": num_iterations
+            }
+            return dict
         
-        parameters, grads, costs = optimize(w,b,x_train,y_train,num_iterations=2000,learning_rate=0.005,print_cost=True)
++ After the final model function, we need to call the model function with necessary parameters, then we will retrieve the cost for every 100 iterations and final accuracy.
 
-        w=parameters["w"]
-        b=parameters["b"]
-
-        y_prediction_test = predict(w,b,x_test)
-        y_prediction_train = predict(w,b,x_train)
-
-        print("train accuracy: {}%".format(100-np.mean(np.abs(y_prediction_train - y_train))*100))
-        print("test accuracy: {}%".format(100-np.mean(np.abs(y_prediction_test - y_test))*100))
-
-        dict = {"costs": costs,
-                "Y_prediction_test": y_prediction_test,
-                "Y_prediction_train": y_prediction_train,
-                "w": w,
-                "b": b,
-                "learning_rate": learning_rate,
-                "num_iterations": num_iterations
-        }
-        return dict
-        
- After the final model function, we need to call the model function with necessary parameters, then we will retrieve the cost for every 100 iterations and final accuracy.
-
-    d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = 3000, learning_rate = 0.003, print_cost = False)
+        d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = 3000, learning_rate = 0.003, print_cost = False)
         
