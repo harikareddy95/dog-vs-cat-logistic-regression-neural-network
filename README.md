@@ -1,0 +1,1 @@
+Using logistic regression with (one neuron) neural network on dog vs cat classifier. Currently having a small issue in the code, so didnt upload the results. Soon will rectify it and upload the analysis as well. 
