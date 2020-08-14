@@ -1,1 +1,1 @@
-Using logistic regression with (one neuron) neural network on dog vs cat classifier. Currently having a small issue in the code, so didnt upload the results. Soon will rectify it and upload the analysis as well. 
+Using logistic regression with (one neuron) neural network on dog and cat images to classify them. The algorithm is coded from scratch without using ready made libraries. Currently having a small issue in the code, so didnt upload the results. Soon will rectify it and upload the analysis as well. 
