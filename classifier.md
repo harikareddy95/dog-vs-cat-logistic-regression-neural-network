@@ -181,7 +181,7 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
             m = x.shape[1]
             y_prediction = np.zeros((1,m))
             w = w.reshape(x.shape[0],1)
-            #
+      
             A = sigmoid(np.dot(w.T,x)+b)
 
             for i in range(A.shape[1]):
@@ -210,8 +210,8 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
             print("test accuracy: {}%".format(100-np.mean(np.abs(y_prediction_test - y_test))*100))
 
             dict = {"costs": costs,
-                    "Y_prediction_test": y_prediction_test,
-                    "Y_prediction_train": y_prediction_train,
+                    "y_prediction_test": y_prediction_test,
+                    "y_prediction_train": y_prediction_train,
                     "w": w,
                     "b": b,
                     "learning_rate": learning_rate,
@@ -223,3 +223,8 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
 
         d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = 3000, learning_rate = 0.003, print_cost = False)
         
+        
++ Analysing with different learning rates, such as 0.001, 0.003,... below graph explains the different costs with different learning rates. 
+++ Higher learning rate results in fluctuation of costs.
+++ Lower learning rate is not always best, should also check for overfitting of the model, which is usually happens when accuracy of training set is larger than test set.
+++ Its optimal to choose learning rate which reduces the cost
