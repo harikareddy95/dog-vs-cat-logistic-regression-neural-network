@@ -232,7 +232,14 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
         <td>test accuracy</td>
         <td>95.68%</td>
     </tr>
-</table>       
+</table>
+
++Let's test an individual image called "xyz.jpeg"
+![xyz.jpeg](/images/xyz.jpeg)
+        image = 'xyz.jpeg'
+        x=(read_image(image).reshape(1, rows*cols*channels).T)/255
+        y=predict(d["w"],d["b"],x)
+        print("Its a cat" if y==0 else "Its a dog")
         
 + Analysing with different learning rates, such as 0.001, 0.003,... below graph explains the different costs with different learning rates. 
     + Higher learning rate results in fluctuation of costs.
