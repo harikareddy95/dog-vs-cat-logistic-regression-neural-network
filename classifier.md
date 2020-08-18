@@ -223,8 +223,18 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
 
         d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = 3000, learning_rate = 0.003, print_cost = False)
         
+ <table>
+    <tr>
+        <td>train accuracy</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>test accuracy</td>
+        <td></td>
+    </tr>
+</table>       
         
 + Analysing with different learning rates, such as 0.001, 0.003,... below graph explains the different costs with different learning rates. 
-++ Higher learning rate results in fluctuation of costs.
-++ Lower learning rate is not always best, should also check for overfitting of the model, which is usually happens when accuracy of training set is larger than test set.
-++ Its optimal to choose learning rate which reduces the cost
+    + Higher learning rate results in fluctuation of costs.
+    + Lower learning rate is not always best, should also check for overfitting of the model, which is usually happens when accuracy of training set is larger than test set.
+    + Its optimal to choose learning rate which reduces the cost
