@@ -234,7 +234,7 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
     </tr>
 </table>
 
-+Let's test an individual image called "xyz.jpeg"
++ Let's test an individual image called "xyz.jpeg"
 
 ![xyz.jpeg](/images/xyz.jpeg)
 
@@ -245,6 +245,7 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
         
  <table>
     <tr>
+        <td>Output:</td>
         <td>Its a cat</td>
     </tr>     
  </table>       
@@ -253,3 +254,5 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
     + Higher learning rate results in fluctuation of costs.
     + Lower learning rate is not always best, should also check for overfitting of the model, which is usually happens when accuracy of training set is larger than test set.
     + Its optimal to choose learning rate which reduces the cost.
+    
+    
