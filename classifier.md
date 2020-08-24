@@ -251,7 +251,7 @@ Sigmoid function decides the final output. Applying a sigmoid function, scales t
  </table>       
  
 + Analysing with different learning rates, such as 0.001, 0.003,... below graph explains the different costs with different learning rates.
-![]
+![graph](/images/graph.png)
     + Higher learning rate results in fluctuation of costs.
     + Lower learning rate is not always best, should also check for overfitting of the model, which is usually happens when accuracy of training set is larger than test set.
     + Its optimal to choose learning rate which reduces the cost.
